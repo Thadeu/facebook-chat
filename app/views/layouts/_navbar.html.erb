@@ -1,0 +1,12 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation" aria-label="main navigation">  
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FacebookChat</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li><%= link_to 'Home', root_path, class: 'navbar-item' %></li>
+      <li><%= link_to 'Sair', destroy_user_session_path, class: 'navbar-item', method: :delete %></li>
+    </ul>
+  </div>
+</nav>

@@ -12,6 +12,14 @@ module FacebookChat
     config.load_defaults 5.1
     config.generators.javascript_engine = :js
 
+    config.generators do |g|
+      # g.template_engine nil #to skip views
+      g.test_framework  nil #to skip test framework
+      # g.assets  false
+      # g.helper false
+      # g.stylesheets false
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
