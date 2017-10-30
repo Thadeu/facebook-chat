@@ -11,6 +11,7 @@ module FacebookChat
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.generators.javascript_engine = :js
+    config.time_zone = 'America/Araguaina'
 
     config.generators do |g|
       # g.template_engine nil #to skip views

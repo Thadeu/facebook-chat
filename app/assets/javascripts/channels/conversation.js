@@ -6,37 +6,22 @@ App.conversation = App.cable.subscriptions.create("ConversationChannel", {
     var conversation = $('#conversations-list').find("[data-conversation-id='" + data['conversation_id'] + "']");
     var countConversationsList = $('#conversations-list').find('[data-conversation-id]').length
 
-    $('.conversation-item').eq(0).css('right', '250px')
-    $('.conversation-item').eq(1).css('right', '523px')
-    $('.conversation-item').eq(2).css('right', '797px')
-    
-    if (data['window'] !== undefined) {
-      var conversation_visible = $(conversation).find('.panel-body').is(':visible');
-
-      if (conversation_visible) {
-        var messages_visible = $(conversation).find('.panel-body').is(':visible');
-
-        if (!messages_visible) {
-          conversation.removeClass('panel-default').addClass('panel-success');
-        }
-
-        conversation.find('.messages-list').find('ul').append(data['message']);
-      }
-      else {
-        $('#conversations-list').append(data['window']);
-        conversation = $('#conversations-list').find("[data-conversation-id='" + data['conversation_id'] + "']");
-        conversation.find('.panel-body').show();
-      }
-    }
-    else {
-      conversation.find('ul').append(data['message']);
-    }
-
-    if (countConversationsList <= 0){
+    if (conversation.length <= 0){
       $('#conversations-list').append(data['window']);
       conversation = $('#conversations-list').find("[data-conversation-id='" + data['conversation_id'] + "']");
       conversation.find('.panel-body').show();
+    }else {
+      if (!conversation.find('.panel-body').is(':visible')){
+        conversation.find('.panel-body').show();
+      }
+
+      conversation.find('.messages-list').find('ul').append(data['message']);
     }
+
+    var $conversationItem = $('.conversation-item')
+    $conversationItem.eq(0).css('right', '250px')
+    $conversationItem.eq(1).css('right', '523px')
+    $conversationItem.eq(2).css('right', '797px')
 
     var messages_list = conversation.find('.messages-list');
     var height = messages_list[0].scrollHeight;

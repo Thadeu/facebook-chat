@@ -1,1 +1,6 @@
 $('#conversations-list').find("[data-conversation-id='" + "<%= @conversation.id %>" + "']").parent().remove();
+
+var $conversationItem = $('.conversation-item')
+$conversationItem.eq(0).css('right', '250px')
+$conversationItem.eq(1).css('right', '523px')
+$conversationItem.eq(2).css('right', '797px')

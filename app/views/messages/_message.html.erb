@@ -1,7 +1,8 @@
 <li>
   <div class="row">
     <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
-      <%= message.body %>
+      <%= message.body %> <br>
+      <small><%= l(message.created_at, format: :long) %></small>
     </div>
   </div>
 </li>

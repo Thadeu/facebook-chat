@@ -8,14 +8,14 @@
     <div class="panel-body" style="display: none;">
       <div class="messages-list">
         <ul>
-          <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
+          <%= render 'conversations/conversation_content', messages: conversation.messages.last(10), user: user %>
         </ul>
       </div>
 
       <form class="new_message">
         <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
         <input name="user_id" type="hidden" value="<%= user.id %>">
-        <textarea name="body" class="form-control body-new-message"></textarea>
+        <textarea name="body" class="form-control body-new-message" autofocus></textarea>
 
         <button type="submit" class="btn btn-success btn-submit-message" value="Send" disabled=true>
           Enviar
