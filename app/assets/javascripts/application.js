@@ -30,3 +30,17 @@
     }
   });
 })();
+
+
+// acao do botao de enviar uma message
+$(document).on('submit', '.new_message', function(e) {
+  e.preventDefault();
+  var values = $(this).serializeArray();
+
+  if ($(this).find('[name=body]').val() != ''){
+    App.conversation.speak(values)
+  }
+  
+  $(this).find('[type=submit]').attr('disabled', true)
+  $(this).trigger('reset')
+})

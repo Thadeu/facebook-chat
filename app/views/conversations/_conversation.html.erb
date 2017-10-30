@@ -1,4 +1,4 @@
-<li>
+<li class="conversation-item">
   <div class="panel panel-default" data-conversation-id="<%= conversation.id %>">
     <div class="panel-heading">
       <%= link_to conversation.opposed_user(user).email, '', class: 'toggle-window' %>
@@ -12,11 +12,27 @@
         </ul>
       </div>
 
-      <%= form_for [conversation, conversation.messages.new], remote: true do |f| %>
-        <%= f.hidden_field :user_id, value: user.id %>
-        <%= f.text_area :body, class: "form-control" %>
-        <%= f.submit "Send", class: "btn btn-success" %>
-      <% end %>
+      <form class="new_message">
+        <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
+        <input name="user_id" type="hidden" value="<%= user.id %>">
+        <textarea name="body" class="form-control body-new-message"></textarea>
+
+        <button type="submit" class="btn btn-success btn-submit-message" value="Send" disabled=true>
+          Enviar
+        </button>
+      </form>
     </div>
   </div>
 </li>
+
+<script>
+$(document).find('.new_message').each(function(index, elem){
+  $(elem).find('.body-new-message').on('keyup', function(){
+    if($(this).val() != ''){
+      $(elem).find('.btn-submit-message').removeAttr('disabled')
+    }else{
+      $(elem).find('.btn-submit-message').attr('disabled', true)
+    }
+  })
+})
+</script>

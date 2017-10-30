@@ -10,7 +10,6 @@
   </head>
 
   <body data-user-id=<%= current_user.try(:id) %>>
-    <%= render 'layouts/navbar' %>
     <div class="container">
       <%= yield %>
     </div>
